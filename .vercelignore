@@ -1,0 +1,57 @@
+# Vercel deployment ignore file
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+test_*.py
+tests/
+
+# Development
+.env
+.env.local
+*.log
+*.sqlite
+*.db
+
+# Git
+.git/
+.gitignore
+
+# Documentation
+*.md
+docs/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build files
+Makefile
+Makefile.ps1
+make.bat
+deploy-vercel.bat
+save.bat
+run.bat
+
+# Backup files
+*.bak
+*.backup
+career-advisor-backup-*
