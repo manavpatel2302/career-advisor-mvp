@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Career Advisor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1 class="logo">🎯 Career Advisor</h1>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/assessment">Assessment</a></li>
+                <li><a href="/dashboard" class="active">Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <div class="user-info">
+                <h3>Welcome!</h3>
+                <p id="userName">Student</p>
+            </div>
+            <button onclick="runAssessment()" class="assess-btn">Run Career Assessment</button>
+        </div>
+
+        <div class="main-content">
+            <h2>Your Career Recommendations</h2>
+            
+            <div id="loadingMessage" class="loading">
+                Click "Run Career Assessment" to get personalized recommendations
+            </div>
+
+            <div id="recommendationsContainer" style="display: none;">
+                <div class="summary-cards">
+                    <div class="summary-card">
+                        <h4>Careers Analyzed</h4>
+                        <p class="big-number" id="careersAnalyzed">0</p>
+                    </div>
+                    <div class="summary-card">
+                        <h4>Top Match Score</h4>
+                        <p class="big-number" id="topMatchScore">0%</p>
+                    </div>
+                    <div class="summary-card">
+                        <h4>Skills Evaluated</h4>
+                        <p class="big-number" id="skillsEvaluated">0</p>
+                    </div>
+                </div>
+
+                <div id="recommendationsList" class="recommendations-list">
+                    <!-- Recommendations will be loaded here -->
+                </div>
+            </div>
+
+            <div id="learningPathContainer" style="display: none;">
+                <h2>Your Learning Path</h2>
+                <div id="learningPath">
+                    <!-- Learning path will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>

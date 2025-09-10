@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills Assessment - Career Advisor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1 class="logo">🎯 Career Advisor</h1>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/assessment" class="active">Assessment</a></li>
+                <li><a href="/dashboard">Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="assessment-container">
+        <h1>Skills & Interest Assessment</h1>
+        <p class="subtitle">Help us understand your strengths and interests better</p>
+
+        <div class="assessment-form">
+            <div class="question-section">
+                <h3>Technical Skills</h3>
+                <p>Select all the skills you currently have:</p>
+                <div id="technicalSkills" class="skills-grid">
+                    <!-- Skills will be loaded dynamically -->
+                </div>
+            </div>
+
+            <div class="question-section">
+                <h3>Soft Skills</h3>
+                <p>Rate your proficiency in these areas:</p>
+                <div class="soft-skills">
+                    <div class="skill-rating">
+                        <label>Communication</label>
+                        <input type="range" min="1" max="5" value="3" id="communication">
+                        <span class="rating-value">3</span>
+                    </div>
+                    <div class="skill-rating">
+                        <label>Leadership</label>
+                        <input type="range" min="1" max="5" value="3" id="leadership">
+                        <span class="rating-value">3</span>
+                    </div>
+                    <div class="skill-rating">
+                        <label>Problem Solving</label>
+                        <input type="range" min="1" max="5" value="3" id="problemSolving">
+                        <span class="rating-value">3</span>
+                    </div>
+                    <div class="skill-rating">
+                        <label>Teamwork</label>
+                        <input type="range" min="1" max="5" value="3" id="teamwork">
+                        <span class="rating-value">3</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question-section">
+                <h3>Career Interests</h3>
+                <p>What type of work environment appeals to you?</p>
+                <div class="interest-options">
+                    <label class="checkbox-label">
+                        <input type="checkbox" value="startup"> Fast-paced Startup
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" value="corporate"> Structured Corporate
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" value="freelance"> Freelance/Independent
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" value="government"> Government/Public Sector
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" value="research"> Research & Development
+                    </label>
+                </div>
+            </div>
+
+            <div class="question-section">
+                <h3>Future Goals</h3>
+                <textarea id="futureGoals" placeholder="Describe your career aspirations in a few sentences..."></textarea>
+            </div>
+
+            <button onclick="submitAssessment()" class="submit-assessment-btn">Get Career Recommendations</button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/assessment.js') }}"></script>
+</body>
+</html>
