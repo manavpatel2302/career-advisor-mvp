@@ -187,3 +187,4 @@ credentials.json
 career-advisor-backup-*
 htmlcov/
 .pytest_cache/
+.vercel
