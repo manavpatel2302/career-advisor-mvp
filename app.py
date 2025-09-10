@@ -9,9 +9,10 @@ import google.generativeai as genai
 
 # Load environment variables
 load_dotenv()
+load_dotenv('.env.production')  # Also try loading production env
 
 app = Flask(__name__)
-app.secret_key = os.getenv('FLASK_SECRET_KEY', 'dev-secret-key-change-in-production')
+app.secret_key = os.getenv('SECRET_KEY', os.getenv('FLASK_SECRET_KEY', 'career-advisor-secret-key-2024-secure-random-string'))
 CORS(app)
 
 # Configure Gemini AI
@@ -25,18 +26,60 @@ else:
 
 # Database helper functions
 def get_db_connection():
-    conn = sqlite3.connect('database/career_advisor.db')
+    # Use /tmp for Vercel serverless functions
+    db_path = '/tmp/career_advisor.db' if os.environ.get('VERCEL') else 'database/career_advisor.db'
+    conn = sqlite3.connect(db_path)
     conn.row_factory = sqlite3.Row
     return conn
 
 def init_db():
     """Initialize database if it doesn't exist"""
-    if not os.path.exists('database/career_advisor.db'):
-        import sys
-        sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-        from database import init_db as db_init
-        db_init.init_database()
-        db_init.seed_sample_data()
+    db_path = '/tmp/career_advisor.db' if os.environ.get('VERCEL') else 'database/career_advisor.db'
+    if not os.path.exists(db_path):
+        # For Vercel, we'll create a simple in-memory database structure
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+        
+        # Create tables
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS users (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                name TEXT NOT NULL,
+                email TEXT UNIQUE NOT NULL,
+                age INTEGER,
+                education_level TEXT,
+                interests TEXT,
+                current_skills TEXT,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        ''')
+        
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS career_paths (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                title TEXT NOT NULL,
+                description TEXT,
+                industry TEXT,
+                required_skills TEXT,
+                average_salary_min INTEGER,
+                average_salary_max INTEGER,
+                growth_potential TEXT,
+                education_requirements TEXT
+            )
+        ''')
+        
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS skills (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                name TEXT NOT NULL,
+                category TEXT,
+                difficulty_level TEXT,
+                learning_resources TEXT
+            )
+        ''')
+        
+        conn.commit()
+        conn.close()
 
 # Initialize database on startup
 init_db()
