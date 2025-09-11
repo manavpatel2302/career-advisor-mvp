@@ -20,6 +20,35 @@
       "dest": "/static/$1"
     },
     {
+      "src": "/auth/google",
+      "methods": ["POST"],
+      "dest": "/api/index.py"
+    },
+    {
+      "src": "/auth/linkedin",
+      "methods": ["POST"],
+      "dest": "/api/index.py"
+    },
+    {
+      "src": "/auth/linkedin/exchange",
+      "methods": ["POST"],
+      "dest": "/api/index.py"
+    },
+    {
+      "src": "/auth/linkedin/callback",
+      "dest": "/api/index.py"
+    },
+    {
+      "src": "/auth/logout",
+      "methods": ["POST"],
+      "dest": "/api/index.py"
+    },
+    {
+      "src": "/auth/check",
+      "methods": ["GET"],
+      "dest": "/api/index.py"
+    },
+    {
       "src": "/(.*)",
       "dest": "/api/index.py"
     }

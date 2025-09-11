@@ -21,6 +21,11 @@ LINKEDIN_CLIENT_ID = os.environ.get('LINKEDIN_CLIENT_ID', 'your-linkedin-client-
 LINKEDIN_CLIENT_SECRET = os.environ.get('LINKEDIN_CLIENT_SECRET', 'your-linkedin-client-secret')
 JWT_SECRET = os.environ.get('JWT_SECRET', 'your-jwt-secret-key')
 
+# Demo mode configuration
+DEMO_MODE = os.environ.get('DEMO_MODE', 'False').lower() == 'true'
+DEMO_USER_EMAIL = os.environ.get('DEMO_USER_EMAIL', 'demo@careercompass.ai')
+DEMO_USER_NAME = os.environ.get('DEMO_USER_NAME', 'Demo User')
+
 # Mock database - Replace with your actual database
 users_db = {}
 
@@ -38,6 +43,42 @@ def google_auth():
     try:
         data = request.get_json()
         token = data.get('token')
+        
+        # Demo mode - bypass real authentication
+        if DEMO_MODE:
+            demo_user_id = 'demo_google_user'
+            user = users_db.get(demo_user_id)
+            is_new_user = False
+            
+            if not user:
+                is_new_user = True
+                user = {
+                    'id': demo_user_id,
+                    'email': DEMO_USER_EMAIL,
+                    'name': DEMO_USER_NAME,
+                    'picture': 'https://ui-avatars.com/api/?name=Demo+User&background=667eea&color=fff',
+                    'auth_method': 'google',
+                    'created_at': datetime.utcnow().isoformat(),
+                    'profile_complete': False
+                }
+                users_db[demo_user_id] = user
+            
+            session_token = generate_user_token(user['id'])
+            session['user_id'] = user['id']
+            session['auth_token'] = session_token
+            
+            return jsonify({
+                'success': True,
+                'user': {
+                    'id': user['id'],
+                    'email': user['email'],
+                    'name': user['name'],
+                    'picture': user['picture']
+                },
+                'token': session_token,
+                'isNewUser': is_new_user,
+                'demo_mode': True
+            })
         
         # Verify the Google ID token
         try:
@@ -115,6 +156,42 @@ def linkedin_auth():
         name = data.get('name')
         linkedin_id = data.get('linkedin_id')
         picture = data.get('picture')
+        
+        # Demo mode - bypass real authentication
+        if DEMO_MODE:
+            demo_user_id = 'demo_linkedin_user'
+            user = users_db.get(demo_user_id)
+            is_new_user = False
+            
+            if not user:
+                is_new_user = True
+                user = {
+                    'id': demo_user_id,
+                    'email': DEMO_USER_EMAIL,
+                    'name': DEMO_USER_NAME + ' (LinkedIn)',
+                    'picture': 'https://ui-avatars.com/api/?name=Demo+LinkedIn&background=0077B5&color=fff',
+                    'auth_method': 'linkedin',
+                    'created_at': datetime.utcnow().isoformat(),
+                    'profile_complete': False
+                }
+                users_db[demo_user_id] = user
+            
+            session_token = generate_user_token(user['id'])
+            session['user_id'] = user['id']
+            session['auth_token'] = session_token
+            
+            return jsonify({
+                'success': True,
+                'user': {
+                    'id': user['id'],
+                    'email': user['email'],
+                    'name': user['name'],
+                    'picture': user['picture']
+                },
+                'token': session_token,
+                'isNewUser': is_new_user,
+                'demo_mode': True
+            })
         
         # Check if user exists
         user = users_db.get(f'linkedin_{linkedin_id}')
