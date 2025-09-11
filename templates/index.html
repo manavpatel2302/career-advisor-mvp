@@ -186,12 +186,12 @@
                 
                 <div class="auth-divider">OR</div>
                 
-                <button type="button" class="btn-social google">
+                <button type="button" class="btn-social google" onclick="signInWithGoogle()">
                     <i class="fab fa-google"></i>
                     Continue with Google
                 </button>
                 
-                <button type="button" class="btn-social linkedin">
+                <button type="button" class="btn-social linkedin" onclick="signInWithLinkedIn()">
                     <i class="fab fa-linkedin"></i>
                     Continue with LinkedIn
                 </button>
@@ -233,12 +233,12 @@
                 
                 <div class="auth-divider">OR</div>
                 
-                <button type="button" class="btn-social google">
+                <button type="button" class="btn-social google" onclick="signInWithGoogle()">
                     <i class="fab fa-google"></i>
                     Continue with Google
                 </button>
                 
-                <button type="button" class="btn-social linkedin">
+                <button type="button" class="btn-social linkedin" onclick="signInWithLinkedIn()">
                     <i class="fab fa-linkedin"></i>
                     Continue with LinkedIn
                 </button>
@@ -253,6 +253,14 @@
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Google Sign-In Library -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    
+    <!-- Social Authentication Script -->
+    <script src="{{ url_for('static', filename='js/social_auth.js') }}"></script>
+    
+    <!-- Main Application Script -->
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
     
     <script>

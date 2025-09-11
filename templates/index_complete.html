@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerCompass AI - Transform Your Career Journey with Intelligence</title>
+    
+    <!-- Premium Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    <!-- Google Sign-In -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
+</head>
+<body>
+    <!-- Advanced Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="brand-icon">🎯</span>
+                <span class="brand-text">CareerCompass <span class="brand-ai">AI</span></span>
+            </div>
+            
+            <div class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#how-it-works" class="nav-link">How It Works</a>
+                <a href="#testimonials" class="nav-link">Success Stories</a>
+                <a href="#pricing" class="nav-link">Pricing</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            
+            <div class="nav-actions">
+                <button class="btn-login" onclick="showLoginModal()">Sign In</button>
+                <button class="btn-register" onclick="showRegisterModal()">Get Started Free</button>
+                <button class="nav-toggle" id="navToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Advanced Animation -->
+    <section class="hero-section" id="home">
+        <div class="hero-background">
+            <div class="hero-gradient"></div>
+            <div class="hero-pattern"></div>
+            <div class="floating-elements">
+                <div class="float-element" style="--delay: 0s;">💼</div>
+                <div class="float-element" style="--delay: 1s;">🎓</div>
+                <div class="float-element" style="--delay: 2s;">💡</div>
+                <div class="float-element" style="--delay: 3s;">🚀</div>
+                <div class="float-element" style="--delay: 4s;">📊</div>
+            </div>
+        </div>
+        
+        <div class="hero-container">
+            <div class="hero-content" data-aos="fade-up">
+                <div class="hero-badge">
+                    <span class="badge-icon">🔥</span>
+                    <span>AI-Powered Career Intelligence Platform</span>
+                </div>
+                
+                <h1 class="hero-title">
+                    Transform Your Career Journey with 
+                    <span class="gradient-text">Artificial Intelligence</span>
+                </h1>
+                
+                <p class="hero-subtitle">
+                    Join 50,000+ professionals who've discovered their ideal career path through our advanced AI-driven assessment platform. Get personalized recommendations, skill gap analysis, and a complete career roadmap tailored to your unique profile.
+                </p>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="50000">0</span>+
+                        <span class="stat-label">Active Users</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="95">0</span>%
+                        <span class="stat-label">Success Rate</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="500">0</span>+
+                        <span class="stat-label">Career Paths</span>
+                    </div>
+                </div>
+                
+                <div class="hero-actions">
+                    <button class="btn-primary-large" onclick="startAssessment()">
+                        <i class="fas fa-rocket"></i>
+                        Start Free Assessment
+                        <span class="btn-arrow">→</span>
+                    </button>
+                    <button class="btn-secondary-large" onclick="watchDemo()">
+                        <i class="fas fa-play-circle"></i>
+                        Watch Demo
+                    </button>
+                </div>
+                
+                <div class="trust-badges">
+                    <span class="trust-text">Trusted by professionals from:</span>
+                    <div class="company-logos">
+                        <span class="company-logo">Google</span>
+                        <span class="company-logo">Microsoft</span>
+                        <span class="company-logo">Amazon</span>
+                        <span class="company-logo">Meta</span>
+                        <span class="company-logo">Apple</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-visual" data-aos="fade-left">
+                <div class="dashboard-preview">
+                    <div class="preview-header">
+                        <span class="preview-dot" style="background: #ff5f57;"></span>
+                        <span class="preview-dot" style="background: #ffbd2e;"></span>
+                        <span class="preview-dot" style="background: #28ca42;"></span>
+                    </div>
+                    <div class="preview-content">
+                        <div class="preview-chart">
+                            <canvas id="careerChart"></canvas>
+                        </div>
+                        <div class="preview-skills">
+                            <div class="skill-progress" style="--progress: 85%;">Leadership</div>
+                            <div class="skill-progress" style="--progress: 92%;">Analytics</div>
+                            <div class="skill-progress" style="--progress: 78%;">Communication</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advanced Features Section -->
+    <section class="features-section" id="features">
+        <div class="section-container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">FEATURES</span>
+                <h2 class="section-title">Everything You Need for Career Success</h2>
+                <p class="section-subtitle">Our comprehensive platform combines cutting-edge AI with expert career guidance to deliver personalized career solutions</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card advanced" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI Career Matching</h3>
+                    <p>Our proprietary AI engine analyzes your complete profile including skills, personality, interests, and values against 500+ career paths to find your perfect match.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> Deep personality assessment</li>
+                        <li><i class="fas fa-check"></i> Skills & competency evaluation</li>
+                        <li><i class="fas fa-check"></i> Interest & passion mapping</li>
+                        <li><i class="fas fa-check"></i> Values alignment analysis</li>
+                    </ul>
+                    <a href="#" class="feature-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="feature-card advanced" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Comprehensive Skill Gap Analysis</h3>
+                    <p>Identify exactly which skills you need to develop for your target role with our detailed gap analysis that compares your current abilities with market requirements.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> Current vs required skills matrix</li>
+                        <li><i class="fas fa-check"></i> Priority-based skill ranking</li>
+                        <li><i class="fas fa-check"></i> Time-to-proficiency estimates</li>
+                        <li><i class="fas fa-check"></i> Industry benchmark comparison</li>
+                    </ul>
+                    <a href="#" class="feature-link">Explore Analysis <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="feature-card advanced" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Personalized Learning Roadmap</h3>
+                    <p>Get a customized learning path with curated courses, certifications, and resources specifically selected for your career goals and preferred learning style.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> Curated course recommendations</li>
+                        <li><i class="fas fa-check"></i> Progress tracking dashboard</li>
+                        <li><i class="fas fa-check"></i> Certification guidance</li>
+                        <li><i class="fas fa-check"></i> Micro-learning modules</li>
+                    </ul>
+                    <a href="#" class="feature-link">View Roadmaps <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="feature-card advanced" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Expert Mentorship Network</h3>
+                    <p>Connect with industry professionals and certified career coaches for personalized guidance, networking opportunities, and insider insights into your target industry.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> 1-on-1 mentoring sessions</li>
+                        <li><i class="fas fa-check"></i> Industry expert connections</li>
+                        <li><i class="fas fa-check"></i> Career coaching support</li>
+                        <li><i class="fas fa-check"></i> Networking opportunities</li>
+                    </ul>
+                    <a href="#" class="feature-link">Meet Mentors <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="feature-card advanced" data-aos="fade-up" data-aos-delay="500">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Real-Time Job Market Intelligence</h3>
+                    <p>Access live data on job market trends, salary benchmarks, demand forecasts, and location-based opportunities for informed career decisions.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> Live salary insights</li>
+                        <li><i class="fas fa-check"></i> Demand forecasting</li>
+                        <li><i class="fas fa-check"></i> Location analysis</li>
+                        <li><i class="fas fa-check"></i> Industry trends</li>
+                    </ul>
+                    <a href="#" class="feature-link">View Market Data <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="feature-card advanced" data-aos="fade-up" data-aos-delay="600">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>Achievement & Progress Tracking</h3>
+                    <p>Monitor your career development journey with detailed analytics, milestone celebrations, and gamified achievement system to keep you motivated.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> Progress dashboard</li>
+                        <li><i class="fas fa-check"></i> Goal setting & tracking</li>
+                        <li><i class="fas fa-check"></i> Achievement badges</li>
+                        <li><i class="fas fa-check"></i> Performance analytics</li>
+                    </ul>
+                    <a href="#" class="feature-link">Track Progress <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="section-container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">PROCESS</span>
+                <h2 class="section-title">Your Journey to Career Success in 4 Simple Steps</h2>
+                <p class="section-subtitle">Our proven methodology has helped thousands find their dream careers</p>
+            </div>
+            
+            <div class="process-timeline">
+                <div class="timeline-line"></div>
+                
+                <div class="process-step" data-aos="fade-right">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3>Complete Comprehensive Assessment</h3>
+                        <p>Take our scientifically-designed 15-minute assessment that evaluates your personality traits, cognitive abilities, interests, values, and career aspirations using advanced psychometric tools.</p>
+                        <div class="step-features">
+                            <span class="step-tag">Personality Analysis</span>
+                            <span class="step-tag">Skills Evaluation</span>
+                            <span class="step-tag">Interest Mapping</span>
+                        </div>
+                    </div>
+                    <div class="step-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                </div>
+                
+                <div class="process-step reverse" data-aos="fade-left">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3>AI-Powered Deep Analysis</h3>
+                        <p>Our proprietary AI engine processes your assessment results against millions of data points, career trajectories, and success patterns to identify your optimal career matches and development areas.</p>
+                        <div class="step-features">
+                            <span class="step-tag">Machine Learning</span>
+                            <span class="step-tag">Pattern Recognition</span>
+                            <span class="step-tag">Predictive Analytics</span>
+                        </div>
+                    </div>
+                    <div class="step-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                </div>
+                
+                <div class="process-step" data-aos="fade-right">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3>Receive Personalized Career Roadmap</h3>
+                        <p>Get your comprehensive career development plan including matched careers, skill gap analysis, learning resources, timeline, milestones, and actionable next steps tailored to your unique profile.</p>
+                        <div class="step-features">
+                            <span class="step-tag">Custom Roadmap</span>
+                            <span class="step-tag">Action Plan</span>
+                            <span class="step-tag">Resources</span>
+                        </div>
+                    </div>
+                    <div class="step-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                </div>
+                
+                <div class="process-step reverse" data-aos="fade-left">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <h3>Execute, Track & Achieve Success</h3>
+                        <p>Follow your personalized plan with continuous AI guidance, track progress through our dashboard, connect with mentors, access resources, and celebrate milestones as you transform your career.</p>
+                        <div class="step-features">
+                            <span class="step-tag">Progress Tracking</span>
+                            <span class="step-tag">Mentor Support</span>
+                            <span class="step-tag">Continuous Updates</span>
+                        </div>
+                    </div>
+                    <div class="step-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-center" data-aos="zoom-in">
+                <button class="btn-primary-large" onclick="startAssessment()">
+                    Start Your Journey Now
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section" id="testimonials">
+        <div class="section-container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">SUCCESS STORIES</span>
+                <h2 class="section-title">Real People, Real Career Transformations</h2>
+                <p class="section-subtitle">Discover how CareerCompass AI has changed thousands of lives</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card" data-aos="fade-up">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "CareerCompass AI completely transformed my career trajectory. I transitioned from teaching to UX design in just 8 months. The skill gap analysis was incredibly accurate, and the personalized learning path saved me months of research. I'm now working at Google!"
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/150?img=1" alt="Sarah Chen">
+                        <div>
+                            <h4>Sarah Chen</h4>
+                            <p>Senior UX Designer at Google</p>
+                            <p class="testimonial-meta">Career Transition • 8 months</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "As a fresh graduate, I was completely lost about my career direction. CareerCompass AI not only showed me the perfect career path but also connected me with amazing mentors. Within 6 months, I landed my dream job as a Data Scientist at Microsoft!"
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/150?img=3" alt="Raj Patel">
+                        <div>
+                            <h4>Raj Patel</h4>
+                            <p>Data Scientist at Microsoft</p>
+                            <p class="testimonial-meta">Fresh Graduate • 6 months</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "The AI recommendations were mind-blowing! I never considered product management, but the assessment showed it was perfect for my skills. The roadmap was clear, actionable, and I'm now a Senior PM at Amazon earning 3x my previous salary!"
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/150?img=5" alt="Emily Rodriguez">
+                        <div>
+                            <h4>Emily Rodriguez</h4>
+                            <p>Senior Product Manager at Amazon</p>
+                            <p class="testimonial-meta">Career Pivot • 10 months</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "After 10 years in accounting, I felt stuck. CareerCompass AI helped me discover my passion for data analytics. The mentor connections were invaluable. Now I'm a Analytics Manager at Meta, doing work I love every day!"
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/150?img=8" alt="Michael Chang">
+                        <div>
+                            <h4>Michael Chang</h4>
+                            <p>Analytics Manager at Meta</p>
+                            <p class="testimonial-meta">Mid-Career Change • 12 months</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "The platform's job market intelligence feature helped me negotiate a 40% salary increase! Understanding my market value and having data to back it up was game-changing. Best investment in my career!"
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/150?img=12" alt="Priya Sharma">
+                        <div>
+                            <h4>Priya Sharma</h4>
+                            <p>Engineering Lead at Apple</p>
+                            <p class="testimonial-meta">Career Growth • 4 months</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "From software developer to AI researcher - CareerCompass AI made this transition possible. The learning roadmap was perfectly structured, and the achievement tracking kept me motivated throughout my journey!"
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/150?img=15" alt="Alex Kim">
+                        <div>
+                            <h4>Alex Kim</h4>
+                            <p>AI Research Scientist at OpenAI</p>
+                            <p class="testimonial-meta">Specialization • 14 months</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section" id="pricing">
+        <div class="section-container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">PRICING</span>
+                <h2 class="section-title">Investment Plans for Your Career Success</h2>
+                <p class="section-subtitle">Choose the perfect plan to accelerate your career transformation</p>
+            </div>
+            
+            <div class="pricing-toggle" data-aos="fade-up">
+                <span>Monthly</span>
+                <label class="switch">
+                    <input type="checkbox" id="billingToggle">
+                    <span class="slider"></span>
+                </label>
+                <span>Annual <span class="save-badge">Save 20%</span></span>
+            </div>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card" data-aos="fade-up">
+                    <div class="pricing-header">
+                        <h3>Starter</h3>
+                        <p class="pricing-desc">Perfect for exploring career options</p>
+                        <div class="price">
+                            <span class="currency">₹</span>
+                            <span class="amount" data-monthly="0" data-annual="0">0</span>
+                            <span class="period">/forever</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Basic AI Career Assessment</li>
+                        <li><i class="fas fa-check"></i> Top 3 Career Matches</li>
+                        <li><i class="fas fa-check"></i> Basic Skill Gap Overview</li>
+                        <li><i class="fas fa-check"></i> Community Forum Access</li>
+                        <li><i class="fas fa-check"></i> Email Support</li>
+                        <li class="disabled"><i class="fas fa-times"></i> Personalized Roadmap</li>
+                        <li class="disabled"><i class="fas fa-times"></i> Mentorship Access</li>
+                        <li class="disabled"><i class="fas fa-times"></i> Advanced Analytics</li>
+                    </ul>
+                    <button class="btn-pricing" onclick="selectPlan('starter')">Start Free</button>
+                </div>
+                
+                <div class="pricing-card featured" data-aos="fade-up" data-aos-delay="100">
+                    <div class="pricing-badge">Most Popular</div>
+                    <div class="pricing-header">
+                        <h3>Professional</h3>
+                        <p class="pricing-desc">Comprehensive career transformation</p>
+                        <div class="price">
+                            <span class="currency">₹</span>
+                            <span class="amount" data-monthly="999" data-annual="799">999</span>
+                            <span class="period">/month</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Advanced AI Assessment</li>
+                        <li><i class="fas fa-check"></i> Unlimited Career Matches</li>
+                        <li><i class="fas fa-check"></i> Detailed Skill Gap Analysis</li>
+                        <li><i class="fas fa-check"></i> Personalized Learning Roadmap</li>
+                        <li><i class="fas fa-check"></i> Monthly Mentor Session (2 hrs)</li>
+                        <li><i class="fas fa-check"></i> Progress Tracking Dashboard</li>
+                        <li><i class="fas fa-check"></i> Job Market Intelligence</li>
+                        <li><i class="fas fa-check"></i> Priority Support</li>
+                    </ul>
+                    <button class="btn-pricing featured" onclick="selectPlan('professional')">Start 7-Day Trial</button>
+                </div>
+                
+                <div class="pricing-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="pricing-header">
+                        <h3>Enterprise</h3>
+                        <p class="pricing-desc">Premium career acceleration</p>
+                        <div class="price">
+                            <span class="currency">₹</span>
+                            <span class="amount" data-monthly="2999" data-annual="2399">2999</span>
+                            <span class="period">/month</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Everything in Professional</li>
+                        <li><i class="fas fa-check"></i> Weekly Mentor Sessions (4 hrs)</li>
+                        <li><i class="fas fa-check"></i> Resume & LinkedIn Optimization</li>
+                        <li><i class="fas fa-check"></i> Interview Preparation</li>
+                        <li><i class="fas fa-check"></i> Salary Negotiation Coaching</li>
+                        <li><i class="fas fa-check"></i> Job Placement Assistance</li>
+                        <li><i class="fas fa-check"></i> Dedicated Success Manager</li>
+                        <li><i class="fas fa-check"></i> 24/7 Premium Support</li>
+                    </ul>
+                    <button class="btn-pricing" onclick="selectPlan('enterprise')">Contact Sales</button>
+                </div>
+            </div>
+
+            <div class="money-back" data-aos="fade-up">
+                <i class="fas fa-shield-alt"></i>
+                <p><strong>30-Day Money Back Guarantee</strong> - If you're not completely satisfied, get a full refund within 30 days</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="section-container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">CONTACT</span>
+                <h2 class="section-title">Get in Touch with Our Team</h2>
+                <p class="section-subtitle">Have questions? We're here to help you succeed</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info" data-aos="fade-right">
+                    <h3>Let's Connect</h3>
+                    <p>Reach out to us for any questions about our platform, career guidance, or partnership opportunities.</p>
+                    
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email Us</h4>
+                                <p>support@careercompass.ai</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Call Us</h4>
+                                <p>+91 98765 43210</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Visit Us</h4>
+                                <p>Bangalore, Karnataka, India</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h4>Business Hours</h4>
+                                <p>Mon-Fri: 9AM-6PM IST</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="social-connect">
+                        <h4>Follow Us</h4>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form" data-aos="fade-left">
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input type="text" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input type="text" name="lastName" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Subject</label>
+                            <select name="subject" required>
+                                <option value="">Select a topic</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="support">Technical Support</option>
+                                <option value="career">Career Guidance</option>
+                                <option value="partnership">Partnership</option>
+                                <option value="feedback">Feedback</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea name="message" rows="5" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-submit">
+                            Send Message
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="section-container">
+            <div class="cta-content" data-aos="zoom-in">
+                <h2>Ready to Transform Your Career?</h2>
+                <p>Join 50,000+ professionals who've found their perfect career path</p>
+                <button class="btn-cta" onclick="startAssessment()">
+                    Start Your Free Assessment Today
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <p class="cta-guarantee">
+                    <i class="fas fa-shield-alt"></i>
+                    30-day money-back guarantee • No credit card required • Cancel anytime
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comprehensive Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section footer-about">
+                    <div class="footer-brand">
+                        <span class="brand-icon">🎯</span>
+                        <span class="brand-text">CareerCompass AI</span>
+                    </div>
+                    <p>Empowering careers through artificial intelligence and expert guidance. Your trusted partner in career transformation.</p>
+                    <div class="footer-stats">
+                        <div class="footer-stat">
+                            <h4>50K+</h4>
+                            <p>Active Users</p>
+                        </div>
+                        <div class="footer-stat">
+                            <h4>95%</h4>
+                            <p>Success Rate</p>
+                        </div>
+                        <div class="footer-stat">
+                            <h4>500+</h4>
+                            <p>Career Paths</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#">AI Assessment</a></li>
+                        <li><a href="#">Career Matching</a></li>
+                        <li><a href="#">Learning Paths</a></li>
+                        <li><a href="#">Mentorship</a></li>
+                        <li><a href="#">Job Intelligence</a></li>
+                        <li><a href="#">Progress Tracking</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Career Blog</a></li>
+                        <li><a href="#">Success Stories</a></li>
+                        <li><a href="#">Career Guides</a></li>
+                        <li><a href="#">Webinars</a></li>
+                        <li><a href="#">Podcasts</a></li>
+                        <li><a href="#">Help Center</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press Kit</a></li>
+                        <li><a href="#">Partners</a></li>
+                        <li><a href="#">Investors</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">GDPR Compliance</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                        <li><a href="#">Disclaimer</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Stay Updated</h4>
+                    <p>Get the latest career insights and platform updates</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Enter your email">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 CareerCompass AI. All rights reserved. Made with ❤️ in India</p>
+                    <div class="footer-badges">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjQwIiB2aWV3Qm94PSIwIDAgMTAwIDQwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iNDAiIHJ4PSI4IiBmaWxsPSIjMTExODI3Ii8+PHRleHQgeD0iNTAiIHk9IjI1IiBmb250LWZhbWlseT0iSW50ZXIsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5TU0wgU2VjdXJlZDwvdGV4dD48L3N2Zz4=" alt="SSL Secured">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjQwIiB2aWV3Qm94PSIwIDAgMTAwIDQwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iNDAiIHJ4PSI4IiBmaWxsPSIjMTExODI3Ii8+PHRleHQgeD0iNTAiIHk9IjI1IiBmb250LWZhbWlseT0iSW50ZXIsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5HRFBSPC90ZXh0Pjwvc3ZnPg==" alt="GDPR Compliant">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjQwIiB2aWV3Qm94PSIwIDAgMTAwIDQwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iNDAiIHJ4PSI4IiBmaWxsPSIjMTExODI3Ii8+PHRleHQgeD0iNTAiIHk9IjI1IiBmb250LWZhbWlseT0iSW50ZXIsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5JU08gMjcwMDE8L3RleHQ+PC9zdmc+" alt="ISO 27001">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Registration Modal with Google/LinkedIn -->
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('registerModal')">&times;</span>
+            <h2>Create Your Account</h2>
+            <p>Start your career transformation journey today</p>
+            
+            <!-- Social Login Options -->
+            <div class="social-login-section">
+                <button type="button" class="btn-social google" onclick="signInWithGoogle()">
+                    <i class="fab fa-google"></i>
+                    Continue with Google
+                </button>
+                
+                <button type="button" class="btn-social linkedin" onclick="signInWithLinkedIn()">
+                    <i class="fab fa-linkedin"></i>
+                    Continue with LinkedIn
+                </button>
+                
+                <div class="auth-divider">OR</div>
+            </div>
+            
+            <form id="registerForm" class="auth-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" name="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" name="lastName" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" name="password" required>
+                    <small>At least 8 characters with uppercase, lowercase and numbers</small>
+                </div>
+                
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" name="phone" pattern="[0-9]{10}" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="checkbox">
+                        <input type="checkbox" required>
+                        I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                    </label>
+                </div>
+                
+                <button type="submit" class="btn-submit">Create Account</button>
+                
+                <p class="auth-switch">
+                    Already have an account? <a href="#" onclick="switchToLogin()">Sign In</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Login Modal with Google/LinkedIn -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('loginModal')">&times;</span>
+            <h2>Welcome Back</h2>
+            <p>Sign in to continue your career journey</p>
+            
+            <!-- Social Login Options -->
+            <div class="social-login-section">
+                <button type="button" class="btn-social google" onclick="signInWithGoogle()">
+                    <i class="fab fa-google"></i>
+                    Continue with Google
+                </button>
+                
+                <button type="button" class="btn-social linkedin" onclick="signInWithLinkedIn()">
+                    <i class="fab fa-linkedin"></i>
+                    Continue with LinkedIn
+                </button>
+                
+                <div class="auth-divider">OR</div>
+            </div>
+            
+            <form id="loginForm" class="auth-form">
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" name="password" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="checkbox">
+                        <input type="checkbox" name="remember">
+                        Remember me
+                    </label>
+                    <a href="#" class="forgot-link">Forgot Password?</a>
+                </div>
+                
+                <button type="submit" class="btn-submit">Sign In</button>
+                
+                <p class="auth-switch">
+                    Don't have an account? <a href="#" onclick="switchToRegister()">Sign Up</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Google One Tap -->
+    <div id="g_id_onload"
+         data-client_id="YOUR_GOOGLE_CLIENT_ID"
+         data-callback="handleGoogleSignIn"
+         data-auto_prompt="false">
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+        
+        // Pricing toggle
+        document.getElementById('billingToggle')?.addEventListener('change', function() {
+            const amounts = document.querySelectorAll('.amount');
+            const periods = document.querySelectorAll('.period');
+            
+            amounts.forEach(amount => {
+                const monthly = amount.getAttribute('data-monthly');
+                const annual = amount.getAttribute('data-annual');
+                amount.textContent = this.checked ? annual : monthly;
+            });
+            
+            periods.forEach(period => {
+                period.textContent = this.checked ? '/year' : '/month';
+            });
+        });
+    </script>
+</body>
+</html>
