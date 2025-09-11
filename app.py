@@ -6,7 +6,6 @@ import os
 from datetime import datetime
 from dotenv import load_dotenv
 import google.generativeai as genai
-from social_auth import social_auth_bp
 
 # Load environment variables
 load_dotenv()
@@ -15,9 +14,6 @@ load_dotenv('.env.production')  # Also try loading production env
 app = Flask(__name__)
 app.secret_key = os.getenv('SECRET_KEY', os.getenv('FLASK_SECRET_KEY', 'career-advisor-secret-key-2024-secure-random-string'))
 CORS(app)
-
-# Register social auth blueprint
-app.register_blueprint(social_auth_bp)
 
 # Configure Gemini AI
 GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')

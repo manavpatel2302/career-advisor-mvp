@@ -140,6 +140,88 @@
         </div>
     </section>
 
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-brand">
+                    <span class="brand-icon">🎯</span>
+                    <span class="brand-text">CareerCompass <span class="brand-ai">AI</span></span>
+                </div>
+                <p class="footer-description">
+                    Empowering professionals to discover their ideal career paths through AI-driven insights and personalized recommendations.
+                </p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#testimonials">Success Stories</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Career Blog</a></li>
+                    <li><a href="#">AI Assessment Guide</a></li>
+                    <li><a href="#">Resume Templates</a></li>
+                    <li><a href="#">Interview Tips</a></li>
+                    <li><a href="#">Skill Development</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Company</h3>
+                <ul class="footer-links">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Get in Touch</h3>
+                <div class="contact-info">
+                    <p><i class="fas fa-envelope"></i> support@careercompass.ai</p>
+                    <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Mumbai, India</p>
+                </div>
+                <div class="newsletter">
+                    <h4>Subscribe to Newsletter</h4>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p>&copy; 2024 CareerCompass AI. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                    <a href="#">Cookies</a>
+                    <a href="#">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <!-- Registration Modal -->
     <div class="modal" id="registerModal">
         <div class="modal-content">
@@ -184,18 +266,6 @@
                 
                 <button type="submit" class="btn-submit">Create Account</button>
                 
-                <div class="auth-divider">OR</div>
-                
-                <button type="button" class="btn-social google" onclick="signInWithGoogle()">
-                    <i class="fab fa-google"></i>
-                    Continue with Google
-                </button>
-                
-                <button type="button" class="btn-social linkedin" onclick="signInWithLinkedIn()">
-                    <i class="fab fa-linkedin"></i>
-                    Continue with LinkedIn
-                </button>
-                
                 <p class="auth-switch">
                     Already have an account? <a href="#" onclick="switchToLogin()">Sign In</a>
                 </p>
@@ -231,18 +301,6 @@
                 
                 <button type="submit" class="btn-submit">Sign In</button>
                 
-                <div class="auth-divider">OR</div>
-                
-                <button type="button" class="btn-social google" onclick="signInWithGoogle()">
-                    <i class="fab fa-google"></i>
-                    Continue with Google
-                </button>
-                
-                <button type="button" class="btn-social linkedin" onclick="signInWithLinkedIn()">
-                    <i class="fab fa-linkedin"></i>
-                    Continue with LinkedIn
-                </button>
-                
                 <p class="auth-switch">
                     Don't have an account? <a href="#" onclick="switchToRegister()">Sign Up</a>
                 </p>
@@ -253,12 +311,6 @@
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
-    <!-- Google Sign-In Library -->
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
-    
-    <!-- Social Authentication Script -->
-    <script src="{{ url_for('static', filename='js/social_auth.js') }}"></script>
     
     <!-- Main Application Script -->
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
