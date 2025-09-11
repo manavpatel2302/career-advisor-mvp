@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Advisor - Your Personalized Career Guide</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1 class="logo">🎯 Career Advisor</h1>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/assessment">Assessment</a></li>
+                <li><a href="/dashboard">Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Find Your Perfect Career Path</h1>
+            <p>AI-powered career guidance tailored for Indian students</p>
+            <button onclick="showRegistrationForm()" class="cta-button">Get Started</button>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <span class="icon">📝</span>
+                    <h3>1. Create Profile</h3>
+                    <p>Tell us about your interests, skills, and educational background</p>
+                </div>
+                <div class="feature-card">
+                    <span class="icon">🤖</span>
+                    <h3>2. AI Assessment</h3>
+                    <p>Our AI analyzes your profile against trending career paths in India</p>
+                </div>
+                <div class="feature-card">
+                    <span class="icon">🎯</span>
+                    <h3>3. Get Recommendations</h3>
+                    <p>Receive personalized career suggestions with match scores</p>
+                </div>
+                <div class="feature-card">
+                    <span class="icon">📚</span>
+                    <h3>4. Learning Path</h3>
+                    <p>Get a customized roadmap to bridge skill gaps</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Modal -->
+    <div id="registrationModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Start Your Career Journey</h2>
+            <form id="registrationForm">
+                <div class="form-group">
+                    <label>Name:</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label>Email:</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Age:</label>
+                    <input type="number" id="age" min="15" max="50">
+                </div>
+                <div class="form-group">
+                    <label>Education Level:</label>
+                    <select id="educationLevel">
+                        <option value="">Select</option>
+                        <option value="10th">10th Standard</option>
+                        <option value="12th">12th Standard</option>
+                        <option value="Diploma">Diploma</option>
+                        <option value="Bachelor">Bachelor's Degree</option>
+                        <option value="Master">Master's Degree</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Interests (comma-separated):</label>
+                    <input type="text" id="interests" placeholder="e.g., Technology, Design, Business">
+                </div>
+                <div class="form-group">
+                    <label>Current Skills (comma-separated):</label>
+                    <input type="text" id="skills" placeholder="e.g., Python, Communication, Excel">
+                </div>
+                <button type="submit" class="submit-btn">Create Profile</button>
+            </form>
+        </div>
+    </div>
+
+    <section class="career-showcase">
+        <div class="container">
+            <h2>Popular Career Paths</h2>
+            <div id="careerList" class="career-grid">
+                <!-- Careers will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Career Advisor. Empowering Indian Students for Future Success.</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

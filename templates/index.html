@@ -3,114 +3,310 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Career Advisor - Your Personalized Career Guide</title>
+    <title>CareerCompass AI - Transform Your Career Journey with Intelligence</title>
+    
+    <!-- Premium Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container">
-            <h1 class="logo">🎯 Career Advisor</h1>
-            <ul class="nav-links">
-                <li><a href="/">Home</a></li>
-                <li><a href="/assessment">Assessment</a></li>
-                <li><a href="/dashboard">Dashboard</a></li>
-            </ul>
+    <!-- Advanced Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="brand-icon">🎯</span>
+                <span class="brand-text">CareerCompass <span class="brand-ai">AI</span></span>
+            </div>
+            
+            <div class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#how-it-works" class="nav-link">How It Works</a>
+                <a href="#testimonials" class="nav-link">Success Stories</a>
+                <a href="#pricing" class="nav-link">Pricing</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            
+            <div class="nav-actions">
+                <button class="btn-login" onclick="showLoginModal()">Sign In</button>
+                <button class="btn-register" onclick="showRegisterModal()">Get Started Free</button>
+                <button class="nav-toggle" id="navToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </div>
     </nav>
 
-    <section class="hero">
-        <div class="container">
-            <h1>Find Your Perfect Career Path</h1>
-            <p>AI-powered career guidance tailored for Indian students</p>
-            <button onclick="showRegistrationForm()" class="cta-button">Get Started</button>
+    <!-- Hero Section with Advanced Animation -->
+    <section class="hero-section" id="home">
+        <div class="hero-background">
+            <div class="hero-gradient"></div>
+            <div class="hero-pattern"></div>
+            <div class="floating-elements">
+                <div class="float-element" style="--delay: 0s;">💼</div>
+                <div class="float-element" style="--delay: 1s;">🎓</div>
+                <div class="float-element" style="--delay: 2s;">💡</div>
+                <div class="float-element" style="--delay: 3s;">🚀</div>
+                <div class="float-element" style="--delay: 4s;">📊</div>
+            </div>
         </div>
-    </section>
-
-    <section class="features">
-        <div class="container">
-            <h2>How It Works</h2>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <span class="icon">📝</span>
-                    <h3>1. Create Profile</h3>
-                    <p>Tell us about your interests, skills, and educational background</p>
+        
+        <div class="hero-container">
+            <div class="hero-content" data-aos="fade-up">
+                <div class="hero-badge">
+                    <span class="badge-icon">🔥</span>
+                    <span>AI-Powered Career Intelligence</span>
                 </div>
-                <div class="feature-card">
-                    <span class="icon">🤖</span>
-                    <h3>2. AI Assessment</h3>
-                    <p>Our AI analyzes your profile against trending career paths in India</p>
+                
+                <h1 class="hero-title">
+                    Transform Your Career Journey with 
+                    <span class="gradient-text">Artificial Intelligence</span>
+                </h1>
+                
+                <p class="hero-subtitle">
+                    Join 50,000+ professionals who've discovered their ideal career path through our advanced AI-driven assessment platform. Get personalized recommendations, skill gap analysis, and a complete career roadmap.
+                </p>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="50000">0</span>+
+                        <span class="stat-label">Active Users</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="95">0</span>%
+                        <span class="stat-label">Success Rate</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="500">0</span>+
+                        <span class="stat-label">Career Paths</span>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <span class="icon">🎯</span>
-                    <h3>3. Get Recommendations</h3>
-                    <p>Receive personalized career suggestions with match scores</p>
+                
+                <div class="hero-actions">
+                    <button class="btn-primary-large" onclick="startAssessment()">
+                        <i class="fas fa-rocket"></i>
+                        Start Free Assessment
+                        <span class="btn-arrow">→</span>
+                    </button>
+                    <button class="btn-secondary-large" onclick="watchDemo()">
+                        <i class="fas fa-play-circle"></i>
+                        Watch Demo
+                    </button>
                 </div>
-                <div class="feature-card">
-                    <span class="icon">📚</span>
-                    <h3>4. Learning Path</h3>
-                    <p>Get a customized roadmap to bridge skill gaps</p>
+                
+                <div class="trust-badges">
+                    <span class="trust-text">Trusted by:</span>
+                    <div class="company-logos">
+                        <span class="company-logo">Google</span>
+                        <span class="company-logo">Microsoft</span>
+                        <span class="company-logo">Amazon</span>
+                        <span class="company-logo">Meta</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-visual" data-aos="fade-left">
+                <div class="dashboard-preview">
+                    <div class="preview-header">
+                        <span class="preview-dot" style="background: #ff5f57;"></span>
+                        <span class="preview-dot" style="background: #ffbd2e;"></span>
+                        <span class="preview-dot" style="background: #28ca42;"></span>
+                    </div>
+                    <div class="preview-content">
+                        <div class="preview-chart">
+                            <canvas id="careerChart"></canvas>
+                        </div>
+                        <div class="preview-skills">
+                            <div class="skill-progress" style="--progress: 85%;">Leadership</div>
+                            <div class="skill-progress" style="--progress: 92%;">Analytics</div>
+                            <div class="skill-progress" style="--progress: 78%;">Communication</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Registration Modal -->
-    <div id="registrationModal" class="modal">
+    <div class="modal" id="registerModal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2>Start Your Career Journey</h2>
-            <form id="registrationForm">
-                <div class="form-group">
-                    <label>Name:</label>
-                    <input type="text" id="name" required>
+            <span class="modal-close" onclick="closeModal('registerModal')">&times;</span>
+            <h2>Create Your Account</h2>
+            <p>Start your career transformation journey</p>
+            
+            <form id="registerForm" class="auth-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" name="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" name="lastName" required>
+                    </div>
                 </div>
+                
                 <div class="form-group">
-                    <label>Email:</label>
-                    <input type="email" id="email" required>
+                    <label>Email Address</label>
+                    <input type="email" name="email" required>
                 </div>
+                
                 <div class="form-group">
-                    <label>Age:</label>
-                    <input type="number" id="age" min="15" max="50">
+                    <label>Password</label>
+                    <input type="password" name="password" required>
+                    <small>At least 8 characters with uppercase, lowercase and numbers</small>
                 </div>
+                
                 <div class="form-group">
-                    <label>Education Level:</label>
-                    <select id="educationLevel">
-                        <option value="">Select</option>
-                        <option value="10th">10th Standard</option>
-                        <option value="12th">12th Standard</option>
-                        <option value="Diploma">Diploma</option>
-                        <option value="Bachelor">Bachelor's Degree</option>
-                        <option value="Master">Master's Degree</option>
-                    </select>
+                    <label>Phone Number</label>
+                    <input type="tel" name="phone" pattern="[0-9]{10}" required>
                 </div>
+                
                 <div class="form-group">
-                    <label>Interests (comma-separated):</label>
-                    <input type="text" id="interests" placeholder="e.g., Technology, Design, Business">
+                    <label class="checkbox">
+                        <input type="checkbox" required>
+                        I agree to the Terms of Service and Privacy Policy
+                    </label>
                 </div>
-                <div class="form-group">
-                    <label>Current Skills (comma-separated):</label>
-                    <input type="text" id="skills" placeholder="e.g., Python, Communication, Excel">
-                </div>
-                <button type="submit" class="submit-btn">Create Profile</button>
+                
+                <button type="submit" class="btn-submit">Create Account</button>
+                
+                <div class="auth-divider">OR</div>
+                
+                <button type="button" class="btn-social google">
+                    <i class="fab fa-google"></i>
+                    Continue with Google
+                </button>
+                
+                <button type="button" class="btn-social linkedin">
+                    <i class="fab fa-linkedin"></i>
+                    Continue with LinkedIn
+                </button>
+                
+                <p class="auth-switch">
+                    Already have an account? <a href="#" onclick="switchToLogin()">Sign In</a>
+                </p>
             </form>
         </div>
     </div>
 
-    <section class="career-showcase">
-        <div class="container">
-            <h2>Popular Career Paths</h2>
-            <div id="careerList" class="career-grid">
-                <!-- Careers will be loaded here -->
-            </div>
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('loginModal')">&times;</span>
+            <h2>Welcome Back</h2>
+            <p>Sign in to continue your career journey</p>
+            
+            <form id="loginForm" class="auth-form">
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" name="password" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="checkbox">
+                        <input type="checkbox">
+                        Remember me
+                    </label>
+                    <a href="#" class="forgot-link">Forgot Password?</a>
+                </div>
+                
+                <button type="submit" class="btn-submit">Sign In</button>
+                
+                <div class="auth-divider">OR</div>
+                
+                <button type="button" class="btn-social google">
+                    <i class="fab fa-google"></i>
+                    Continue with Google
+                </button>
+                
+                <button type="button" class="btn-social linkedin">
+                    <i class="fab fa-linkedin"></i>
+                    Continue with LinkedIn
+                </button>
+                
+                <p class="auth-switch">
+                    Don't have an account? <a href="#" onclick="switchToRegister()">Sign Up</a>
+                </p>
+            </form>
         </div>
-    </section>
+    </div>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Career Advisor. Empowering Indian Students for Future Success.</p>
-        </div>
-    </footer>
-
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+        
+        // Counter animation
+        const counters = document.querySelectorAll('.stat-number');
+        const speed = 200;
+        
+        counters.forEach(counter => {
+            const animate = () => {
+                const value = +counter.getAttribute('data-count');
+                const data = +counter.innerText;
+                const time = value / speed;
+                
+                if (data < value) {
+                    counter.innerText = Math.ceil(data + time);
+                    setTimeout(animate, 1);
+                } else {
+                    counter.innerText = value;
+                }
+            }
+            
+            // Start animation when in viewport
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animate();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            });
+            
+            observer.observe(counter);
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Mobile menu toggle
+        document.getElementById('navToggle').addEventListener('click', () => {
+            document.getElementById('navMenu').classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
